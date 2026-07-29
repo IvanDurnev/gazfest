@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    >
+    <meta name="theme-color" content="#071c78">
+    <title>ГАЗ!ФЕСТ — Свободный</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='miniapp/styles.css') }}"
+    >
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="https://st.max.ru/js/max-web-app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero-shape hero-shape--one"></div>
+        <div class="hero-shape hero-shape--two"></div>
+        <div class="hero-dots"></div>
+        <div class="brand" aria-label="ГАЗ ФЕСТ Свободный">
+          <span class="brand-main">ГАЗ!ФЕСТ</span>
+          <span class="brand-script">Свободный</span>
+        </div>
+        <div class="platform-pill">
+          <span class="max-mark">M</span>
+          <span>Всё о фестивале — в MAX</span>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="assistant-card" aria-labelledby="assistant-title">
+          <img
+            class="assistant-image"
+            src="{{ url_for('static', filename='miniapp/images/robot.png') }}"
+            alt="Гелик — виртуальный помощник фестиваля"
+          >
+          <div class="assistant-copy">
+            <div class="assistant-status">
+              <h1 id="assistant-title">Гелик онлайн</h1>
+              <span class="status-dot"></span>
+              <span>онлайн</span>
+            </div>
+            <button class="speech-bubble" type="button" data-toast="Напиши мне прямо в чат-бот.">
+              <span id="assistant-greeting">Отвечаю на твои вопросы 👋</span>
+            </button>
+          </div>
+        </section>
+
+        <button class="application-button" id="open-application" type="button">
+          <span class="application-button__icon">
+            <i data-lucide="clipboard-pen-line"></i>
+          </span>
+          <span>
+            <strong>Подать заявку на участие</strong>
+            <small>Заезд или шоу «Ярче звезд»</small>
+          </span>
+          <i data-lucide="chevron-right"></i>
+        </button>
+
+        <section
+          class="applications-overview"
+          id="applications-overview"
+          aria-labelledby="applications-overview-title"
+          hidden
+        >
+          <div class="applications-overview__header">
+            <div>
+              <p>Участие в фестивале</p>
+              <h2 id="applications-overview-title">Мои заявки</h2>
+            </div>
+            <span id="applications-count">0</span>
+          </div>
+          <div class="applications-list" id="applications-list"></div>
+        </section>
+
+        <nav class="quick-grid" aria-label="Разделы фестиваля">
+          <button class="quick-item" type="button" data-section="schedule">
+            <span class="quick-icon"><i data-lucide="calendar-days"></i></span>
+            <span>Программа</span>
+          </button>
+          <button class="quick-item" type="button" data-toast="Раздел конкурсов скоро откроется">
+            <span class="quick-icon"><i data-lucide="trophy"></i></span>
+            <span>Конкурсы</span>
+          </button>
+          <button class="quick-item" type="button" data-section="activities">
+            <span class="quick-icon"><i data-lucide="rocket"></i></span>
+            <span>Активности</span>
+          </button>
+          <button class="quick-item" type="button" data-toast="Карта фестиваля скоро появится">
+            <span class="quick-icon"><i data-lucide="map-pin"></i></span>
+            <span>Карта</span>
+          </button>
+          <button class="quick-item" type="button" data-section="lottery">
+            <span class="quick-icon"><i data-lucide="ticket"></i></span>
+            <span>Лото</span>
+          </button>
+        </nav>
+
+        <section class="lottery-card" id="lottery" aria-labelledby="lottery-title">
+          <div class="confetti" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="lottery-copy">
+            <p class="eyebrow">Фестивальное лото</p>
+            <h2 id="lottery-title">Ваши билеты: <strong id="ticket-count">0</strong></h2>
+            <p>Чем больше активностей —<br>тем больше шансов</p>
+            <button class="primary-small" type="button" data-toast="Билеты можно будет получить позже.">
+              Перейти к лото
+              <span><i data-lucide="chevron-right"></i></span>
+            </button>
+          </div>
+          <img
+            class="lottery-image"
+            src="{{ url_for('static', filename='miniapp/images/lottery.png') }}"
+            alt=""
+          >
+        </section>
+
+        <section class="schedule-card" id="schedule" aria-labelledby="schedule-title">
+          <div class="section-heading">
+            <h2 id="schedule-title">В программе</h2>
+            <button id="show-all" type="button">
+              Смотреть все
+              <i data-lucide="chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="schedule-list">
+            <article class="schedule-row">
+              <time datetime="11:00">11:00<small>12:00</small></time>
+              <span class="event-icon event-icon--blue"><i data-lucide="mic-2"></i></span>
+              <div class="event-copy">
+                <h3>Свободный микрофон</h3>
+                <p><i data-lucide="map-pin"></i> Главная сцена</p>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить Свободный микрофон в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row">
+              <time datetime="14:00">14:00<small>15:00</small></time>
+              <span class="event-icon event-icon--cyan"><i data-lucide="message-circle-question"></i></span>
+              <div class="event-copy">
+                <h3>Квиз, плиз!</h3>
+                <p><i data-lucide="map-pin"></i> Лекторий</p>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить Квиз в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row">
+              <time datetime="17:30">17:30<small>18:00</small></time>
+              <span class="event-icon event-icon--violet"><i data-lucide="gift"></i></span>
+              <div class="event-copy">
+                <h3>Розыгрыш лото</h3>
+                <p><i data-lucide="map-pin"></i> Главная сцена</p>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить розыгрыш в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row schedule-row--extra" hidden>
+              <time datetime="19:00">19:00<small>20:30</small></time>
+              <span class="event-icon event-icon--blue"><i data-lucide="music-2"></i></span>
+              <div class="event-copy">
+                <h3>Большой концерт</h3>
+                <p><i data-lucide="map-pin"></i> Главная сцена</p>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить концерт в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <button class="activities-button" id="activities" type="button" data-toast="Активности скоро откроются">
+          <i data-lucide="rocket"></i>
+          <span>Открыть активности</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Основная навигация">
+        <button class="bottom-item is-active" type="button" data-toast="Вы уже на главной">
+          <i data-lucide="house"></i>
+          <span>Главная</span>
+        </button>
+        <button class="bottom-item" type="button" data-toast="Избранное пока пусто">
+          <i data-lucide="star"></i>
+          <span>Избранное</span>
+        </button>
+        <button class="bottom-item" type="button" data-toast="Новых уведомлений нет">
+          <i data-lucide="bell"></i>
+          <span>Уведомления</span>
+        </button>
+        <button class="bottom-item" type="button" data-toast="Профиль станет доступен после авторизации">
+          <i data-lucide="user-round"></i>
+          <span>Профиль</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="sheet-backdrop" id="application-backdrop" hidden></div>
+    <section
+      class="application-sheet"
+      id="application-sheet"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="application-title"
+      hidden
+    >
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <header class="sheet-header">
+        <div>
+          <p>Газ!Фест · Свободный</p>
+          <h2 id="application-title">Заявка на участие</h2>
+        </div>
+        <button
+          class="sheet-close"
+          id="close-application"
+          type="button"
+          aria-label="Закрыть форму"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </header>
+
+      <form class="application-form" id="application-form">
+        <fieldset class="form-section activity-choice">
+          <legend>Выберите активность</legend>
+
+          <label class="activity-option">
+            <input type="radio" name="activity" value="ride" checked>
+            <span class="activity-option__icon activity-option__icon--cyan">
+              <i data-lucide="bike"></i>
+            </span>
+            <span>
+              <strong>Участвовать в заезде</strong>
+              <small>Велосипеды, ролики, скейт и другое</small>
+            </span>
+            <i class="activity-check" data-lucide="circle-check"></i>
+          </label>
+
+          <label class="activity-option">
+            <input type="radio" name="activity" value="stars">
+            <span class="activity-option__icon activity-option__icon--violet">
+              <i data-lucide="mic-vocal"></i>
+            </span>
+            <span>
+              <strong>Шоу «Ярче звезд»</strong>
+              <small>Расскажите о своем номере</small>
+            </span>
+            <i class="activity-check" data-lucide="circle-check"></i>
+          </label>
+        </fieldset>
+
+        <div class="form-section">
+          <div class="form-section__title">
+            <span>1</span>
+            <strong>Участник</strong>
+          </div>
+          <div class="form-grid form-grid--two">
+            <label class="form-field">
+              <span>Имя</span>
+              <input
+                id="application-first-name"
+                name="first_name"
+                type="text"
+                maxlength="100"
+                autocomplete="given-name"
+                placeholder="Иван"
+                required
+              >
+            </label>
+            <label class="form-field">
+              <span>Фамилия</span>
+              <input
+                id="application-last-name"
+                name="last_name"
+                type="text"
+                maxlength="100"
+                autocomplete="family-name"
+                placeholder="Иванов"
+                required
+              >
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section activity-fields" id="ride-fields">
+          <div class="form-section__title">
+            <span>2</span>
+            <strong>Данные для заезда</strong>
+          </div>
+          <label class="form-field">
+            <span>Возраст</span>
+            <input
+              name="age"
+              type="number"
+              min="6"
+              max="100"
+              inputmode="numeric"
+              placeholder="Например, 24"
+              required
+            >
+          </label>
+
+          <fieldset class="equipment-choice">
+            <legend>Выберите снаряд</legend>
+            <div class="equipment-grid">
+              <label>
+                <input type="radio" name="equipment" value="bicycle" checked>
+                <span><i data-lucide="bike"></i>Велосипед</span>
+              </label>
+              <label>
+                <input type="radio" name="equipment" value="rollers">
+                <span><i data-lucide="footprints"></i>Ролики</span>
+              </label>
+              <label>
+                <input type="radio" name="equipment" value="skate">
+                <span><i data-lucide="move-right"></i>Скейт</span>
+              </label>
+              <label>
+                <input type="radio" name="equipment" value="other">
+                <span><i data-lucide="plus"></i>Другое</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="form-field" id="equipment-other-field" hidden>
+            <span>Укажите свой снаряд</span>
+            <input
+              name="equipment_other"
+              type="text"
+              maxlength="100"
+              placeholder="Например, самокат"
+            >
+          </label>
+        </div>
+
+        <div class="form-section activity-fields" id="stars-fields" hidden>
+          <div class="form-section__title">
+            <span>2</span>
+            <strong>Данные для выступления</strong>
+          </div>
+          <label class="form-field">
+            <span>Телефон</span>
+            <input
+              name="phone"
+              type="tel"
+              maxlength="32"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="+7 999 123-45-67"
+            >
+          </label>
+          <label class="form-field">
+            <span>Описание номера</span>
+            <textarea
+              name="performance_description"
+              maxlength="2000"
+              rows="5"
+              placeholder="Расскажите, что вы хотите показать на сцене"
+            ></textarea>
+            <small>До 2000 символов</small>
+          </label>
+        </div>
+
+        <div class="form-error" id="application-error" role="alert" hidden></div>
+        <div
+          class="already-applied"
+          id="already-applied"
+          role="status"
+          hidden
+        >
+          <i data-lucide="badge-check"></i>
+          <span>
+            <strong>Заявка уже подана</strong>
+            <small>Она сохранена в разделе «Мои заявки».</small>
+          </span>
+        </div>
+
+        <button class="form-submit" id="application-submit" type="submit">
+          <span>Отправить заявку</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <p class="form-notice">
+          Нажимая кнопку, вы подтверждаете правильность указанных данных.
+        </p>
+      </form>
+
+      <div class="application-success" id="application-success" hidden>
+        <span class="success-icon"><i data-lucide="check"></i></span>
+        <h3>Заявка отправлена!</h3>
+        <p>
+          Мы сохранили ваши данные. Организаторы свяжутся с вами, если
+          потребуется уточнить детали.
+        </p>
+        <button id="application-done" type="button">Вернуться на главную</button>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="{{ url_for('static', filename='miniapp/app.js') }}"></script>
+  </body>
+</html>
