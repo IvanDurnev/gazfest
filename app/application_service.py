@@ -20,8 +20,7 @@ class ParticipationApplicationRequest(BaseModel):
     first_name: str = Field(min_length=1, max_length=100)
     last_name: str = Field(min_length=1, max_length=100)
     age: int | None = Field(default=None, ge=6, le=100)
-    equipment: Literal["bicycle", "rollers", "skate", "other"] | None = None
-    equipment_other: str | None = Field(default=None, max_length=100)
+    equipment: Literal["bicycle", "rollers", "scooter"] | None = None
     phone: str | None = Field(default=None, max_length=32)
     performance_description: str | None = Field(default=None, max_length=2000)
 
@@ -34,7 +33,6 @@ class ParticipationApplicationRequest(BaseModel):
         return value
 
     @field_validator(
-        "equipment_other",
         "phone",
         "performance_description",
     )
@@ -47,8 +45,6 @@ class ParticipationApplicationRequest(BaseModel):
         if self.activity == "ride":
             if self.age is None or self.equipment is None:
                 raise ValueError("age and equipment are required for ride")
-            if self.equipment == "other" and not self.equipment_other:
-                raise ValueError("custom equipment is required")
         else:
             phone_digits = re.sub(r"\D", "", self.phone or "")
             if not 10 <= len(phone_digits) <= 15:
@@ -85,11 +81,7 @@ def create_participation_application(
         last_name=data.last_name,
         age=data.age if data.activity == "ride" else None,
         equipment=data.equipment if data.activity == "ride" else None,
-        equipment_other=(
-            data.equipment_other
-            if data.activity == "ride" and data.equipment == "other"
-            else None
-        ),
+        equipment_other=None,
         phone=data.phone if data.activity == "stars" else None,
         performance_description=(
             data.performance_description if data.activity == "stars" else None

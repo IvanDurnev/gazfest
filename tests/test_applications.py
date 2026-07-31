@@ -57,8 +57,7 @@ def test_ride_application_is_saved(client, app):
             "first_name": "Иван",
             "last_name": "Иванов",
             "age": 24,
-            "equipment": "other",
-            "equipment_other": "Самокат",
+            "equipment": "scooter",
         },
         make_init_data(),
     )
@@ -74,9 +73,26 @@ def test_ride_application_is_saved(client, app):
         assert application.max_user_id == 42
         assert application.activity == "ride"
         assert application.age == 24
-        assert application.equipment == "other"
-        assert application.equipment_other == "Самокат"
+        assert application.equipment == "scooter"
+        assert application.equipment_other is None
         assert db.session.get(FestivalUser, 42).chat_id == 123
+
+
+def test_removed_ride_equipment_is_rejected(client):
+    for equipment in ("skate", "other"):
+        response = post_application(
+            client,
+            {
+                "activity": "ride",
+                "first_name": "Иван",
+                "last_name": "Иванов",
+                "age": 24,
+                "equipment": equipment,
+            },
+            make_init_data(),
+        )
+
+        assert response.status_code == 422
 
 
 def test_stars_application_is_saved(client, app):

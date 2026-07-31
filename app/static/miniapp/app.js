@@ -74,9 +74,6 @@ const applicationError = document.querySelector("#application-error");
 const applicationSubmit = document.querySelector("#application-submit");
 const rideFields = document.querySelector("#ride-fields");
 const starsFields = document.querySelector("#stars-fields");
-const equipmentOtherField = document.querySelector(
-  "#equipment-other-field",
-);
 const alreadyApplied = document.querySelector("#already-applied");
 let savedApplications = [];
 let applicationSubmitting = false;
@@ -84,6 +81,8 @@ let applicationSubmitting = false;
 const equipmentLabels = {
   bicycle: "Велосипед",
   rollers: "Ролики",
+  scooter: "Самокат",
+  // Legacy labels are retained for applications submitted before this change.
   skate: "Скейт",
   other: "Другой снаряд",
 };
@@ -197,15 +196,7 @@ function updateActivityFields() {
   setRequired(rideFields, "[name='age']", isRide);
   setRequired(starsFields, "[name='phone']", !isRide);
   setRequired(starsFields, "[name='performance_description']", !isRide);
-  updateEquipmentOther();
   syncSelectedApplicationState();
-}
-
-function updateEquipmentOther() {
-  const equipment = new FormData(applicationForm).get("equipment");
-  const shouldShow = !rideFields.hidden && equipment === "other";
-  equipmentOtherField.hidden = !shouldShow;
-  equipmentOtherField.querySelector("input").required = shouldShow;
 }
 
 function syncSelectedApplicationState() {
@@ -283,10 +274,6 @@ applicationForm
   .querySelectorAll("[name='activity']")
   .forEach((input) => input.addEventListener("change", updateActivityFields));
 
-applicationForm
-  .querySelectorAll("[name='equipment']")
-  .forEach((input) => input.addEventListener("change", updateEquipmentOther));
-
 applicationForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   applicationError.hidden = true;
@@ -313,7 +300,6 @@ applicationForm.addEventListener("submit", async (event) => {
   if (activity === "ride") {
     payload.age = Number(formData.get("age"));
     payload.equipment = formData.get("equipment");
-    payload.equipment_other = formData.get("equipment_other") || null;
   } else {
     payload.phone = formData.get("phone");
     payload.performance_description = formData.get(
