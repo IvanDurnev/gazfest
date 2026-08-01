@@ -35,17 +35,18 @@
         <section class="assistant-card" aria-labelledby="assistant-title">
           <img
             class="assistant-image"
-            src="{{ url_for('static', filename='miniapp/images/robot.png') }}"
-            alt="Гелик — виртуальный помощник фестиваля"
+            src="{{ url_for('static', filename='miniapp/images/gelya.png') }}"
+            alt="Геля — главная героиня и помощница фестиваля"
           >
           <div class="assistant-copy">
+            <span class="assistant-kicker">Твой гид по ГАЗ!ФЕСТУ</span>
             <div class="assistant-status">
-              <h1 id="assistant-title">Гелик онлайн</h1>
+              <h1 id="assistant-title">Геля на связи</h1>
               <span class="status-dot"></span>
               <span>онлайн</span>
             </div>
-            <button class="speech-bubble" type="button" data-toast="Напиши мне прямо в чат-бот.">
-              <span id="assistant-greeting">Отвечаю на твои вопросы 👋</span>
+            <button class="speech-bubble" type="button" data-toast="Напиши Геле прямо в чате 💙">
+              <span id="assistant-greeting">Привет! Я Геля 👋 Помогу на фестивале</span>
             </button>
           </div>
         </section>
@@ -131,46 +132,92 @@
 
           <div class="schedule-list">
             <article class="schedule-row">
-              <time datetime="11:00">11:00<small>12:00</small></time>
-              <span class="event-icon event-icon--blue"><i data-lucide="mic-2"></i></span>
+              <time datetime="14:00">14:00</time>
+              <span class="event-icon event-icon--blue"><i data-lucide="flag"></i></span>
               <div class="event-copy">
-                <h3>Свободный микрофон</h3>
-                <p><i data-lucide="map-pin"></i> Главная сцена</p>
+                <h3>Открытие фестиваля и старт работы всех зон</h3>
               </div>
-              <button class="favorite" type="button" aria-label="Добавить Свободный микрофон в избранное">
+              <button class="favorite" type="button" aria-label="Добавить открытие фестиваля в избранное">
                 <i data-lucide="star"></i>
               </button>
             </article>
             <article class="schedule-row">
-              <time datetime="14:00">14:00<small>15:00</small></time>
-              <span class="event-icon event-icon--cyan"><i data-lucide="message-circle-question"></i></span>
+              <time datetime="15:00">15:00</time>
+              <span class="event-icon event-icon--cyan"><i data-lucide="bike"></i></span>
               <div class="event-copy">
-                <h3>Квиз, плиз!</h3>
-                <p><i data-lucide="map-pin"></i> Лекторий</p>
+                <h3>Экологические заезды «Свободный ход» и концерт творческих коллективов</h3>
               </div>
-              <button class="favorite" type="button" aria-label="Добавить Квиз в избранное">
+              <button class="favorite" type="button" aria-label="Добавить экологические заезды в избранное">
                 <i data-lucide="star"></i>
               </button>
             </article>
             <article class="schedule-row">
-              <time datetime="17:30">17:30<small>18:00</small></time>
-              <span class="event-icon event-icon--violet"><i data-lucide="gift"></i></span>
+              <time datetime="17:30">17:30</time>
+              <span class="event-icon event-icon--violet"><i data-lucide="mic-vocal"></i></span>
               <div class="event-copy">
-                <h3>Розыгрыш лото</h3>
-                <p><i data-lucide="map-pin"></i> Главная сцена</p>
+                <h3>Фестиваль талантов «Ярче звезд»</h3>
               </div>
-              <button class="favorite" type="button" aria-label="Добавить розыгрыш в избранное">
+              <button class="favorite" type="button" aria-label="Добавить фестиваль талантов в избранное">
                 <i data-lucide="star"></i>
               </button>
             </article>
             <article class="schedule-row schedule-row--extra" hidden>
-              <time datetime="19:00">19:00<small>20:30</small></time>
-              <span class="event-icon event-icon--blue"><i data-lucide="music-2"></i></span>
+              <time datetime="18:20">18:20</time>
+              <span class="event-icon event-icon--blue"><i data-lucide="party-popper"></i></span>
               <div class="event-copy">
-                <h3>Большой концерт</h3>
-                <p><i data-lucide="map-pin"></i> Главная сцена</p>
+                <h3>Официальное открытие</h3>
               </div>
-              <button class="favorite" type="button" aria-label="Добавить концерт в избранное">
+              <button class="favorite" type="button" aria-label="Добавить официальное открытие в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row schedule-row--extra" hidden>
+              <time datetime="18:30">18:30</time>
+              <span class="event-icon event-icon--cyan"><i data-lucide="messages-square"></i></span>
+              <div class="event-copy">
+                <h3>Приветствия руководителей и администрации города</h3>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить приветствия руководителей в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row schedule-row--extra" hidden>
+              <time datetime="18:45">18:45</time>
+              <span class="event-icon event-icon--violet"><i data-lucide="award"></i></span>
+              <div class="event-copy">
+                <h3>Награждение работников предприятия</h3>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить награждение в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row schedule-row--extra" hidden>
+              <time datetime="19:45">19:45</time>
+              <span class="event-icon event-icon--blue"><i data-lucide="headphones"></i></span>
+              <div class="event-copy">
+                <h3>DJ Грув</h3>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить DJ Грув в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row schedule-row--extra" hidden>
+              <time datetime="20:55">20:55</time>
+              <span class="event-icon event-icon--cyan"><i data-lucide="disc-3"></i></span>
+              <div class="event-copy">
+                <h3>DJ Smash</h3>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить DJ Smash в избранное">
+                <i data-lucide="star"></i>
+              </button>
+            </article>
+            <article class="schedule-row schedule-row--extra" hidden>
+              <time datetime="22:00">22:00</time>
+              <span class="event-icon event-icon--violet"><i data-lucide="flag-off"></i></span>
+              <div class="event-copy">
+                <h3>Завершение фестиваля</h3>
+              </div>
+              <button class="favorite" type="button" aria-label="Добавить завершение фестиваля в избранное">
                 <i data-lucide="star"></i>
               </button>
             </article>

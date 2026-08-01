@@ -14,6 +14,22 @@ def test_knowledge_contains_festival_facts():
     assert "DJ Smash" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "Газпром переработка Благовещенск" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "Ярче звезд" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "Ты — Геля" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "в женском роде" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    expected_program = {
+        "14:00": "открытие фестиваля и старт работы всех зон",
+        "15:00": "экологические заезды «Свободный ход»",
+        "17:30": "фестиваль талантов «Ярче звезд»",
+        "18:20": "официальное открытие",
+        "18:30": "приветствия руководителей и администрации города",
+        "18:45": "награждение работников предприятия",
+        "19:45": "DJ Groove",
+        "20:55": "DJ Smash",
+        "22:00": "завершение фестиваля",
+    }
+    for event_time, event_name in expected_program.items():
+        assert event_time in FESTIVAL_ASSISTANT_INSTRUCTIONS
+        assert event_name in FESTIVAL_ASSISTANT_INSTRUCTIONS
 
 
 def test_generate_festival_answer_uses_responses_api(monkeypatch):

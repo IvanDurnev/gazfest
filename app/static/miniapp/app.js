@@ -7,7 +7,7 @@ if (webApp) {
   const firstName = webApp.initDataUnsafe?.user?.first_name;
   if (firstName) {
     document.querySelector("#assistant-greeting").textContent =
-      `Привет, ${firstName}! Отвечу на твои вопросы 👋`;
+      `Привет, ${firstName}! Я Геля 👋 Чем тебе помочь?`;
   }
 }
 
@@ -49,11 +49,13 @@ document.querySelectorAll(".favorite").forEach((button) => {
 });
 
 const showAll = document.querySelector("#show-all");
-const extraEvent = document.querySelector(".schedule-row--extra");
+const extraEvents = document.querySelectorAll(".schedule-row--extra");
 
 showAll.addEventListener("click", () => {
-  const willShow = extraEvent.hidden;
-  extraEvent.hidden = !willShow;
+  const willShow = extraEvents[0].hidden;
+  extraEvents.forEach((event) => {
+    event.hidden = !willShow;
+  });
   showAll.firstChild.textContent = willShow ? "Свернуть " : "Смотреть все ";
   window.lucide?.createIcons();
 });

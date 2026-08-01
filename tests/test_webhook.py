@@ -39,6 +39,8 @@ def test_miniapp_page(client):
 
     assert response.status_code == 200
     assert "ГАЗ!ФЕСТ" in response.text
+    assert "Геля на связи" in response.text
+    assert "miniapp/images/gelya.png" in response.text
 
 
 def test_webhook_rejects_wrong_secret(client):
