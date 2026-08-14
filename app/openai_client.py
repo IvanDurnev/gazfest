@@ -69,10 +69,14 @@ def generate_festival_answer(text: str) -> str:
     if Config.OPENAI_MODEL.startswith("gpt-5.6"):
         request["reasoning"] = {"effort": "none"}
 
-    with OpenAI(
-        api_key=Config.OPENAI_API_KEY,
-        timeout=Config.OPENAI_TIMEOUT_SECONDS,
-    ) as client:
+    client_options = {
+        "api_key": Config.OPENAI_API_KEY,
+        "timeout": Config.OPENAI_TIMEOUT_SECONDS,
+    }
+    if Config.OPENAI_BASE_URL:
+        client_options["base_url"] = Config.OPENAI_BASE_URL
+
+    with OpenAI(**client_options) as client:
         response = client.responses.create(**request)
 
     answer = response.output_text.strip()

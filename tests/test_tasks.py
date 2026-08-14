@@ -2,7 +2,16 @@ from unittest.mock import Mock
 
 import httpx
 
+from app.celery_app import celery
 from app.tasks import answer_message
+
+
+def test_tasks_are_routed_to_separate_queues():
+    routes = celery.conf.task_routes
+
+    assert routes["app.tasks.answer_message"]["queue"] == "answers"
+    assert routes["app.tasks.send_main_menu"]["queue"] == "system"
+    assert routes["app.tasks.register_user_and_send_main_menu"]["queue"] == "system"
 
 
 def make_max_client() -> Mock:

@@ -54,6 +54,7 @@ class Config:
     PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
 
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+    OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "").rstrip("/")
     OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-terra")
     OPENAI_TIMEOUT_SECONDS = float(os.getenv("OPENAI_TIMEOUT_SECONDS", "30"))
     OPENAI_MAX_OUTPUT_TOKENS = int(os.getenv("OPENAI_MAX_OUTPUT_TOKENS", "500"))
