@@ -6,11 +6,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     >
-    <meta name="theme-color" content="#001747">
+    <meta name="theme-color" content="#001c35">
     <title>ГАЗ!ФЕСТ — Свободный</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='miniapp/styles.css') }}"
+      href="{{ url_for('static', filename='miniapp/styles.css') }}?v=2"
     >
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
     <script src="https://st.max.ru/js/max-web-app.js"></script>
@@ -20,8 +20,8 @@
       <header class="hero">
         <img
           class="hero-kv"
-          src="{{ url_for('static', filename='miniapp/images/kv.jpg') }}"
-          alt="ГАЗ!ФЕСТ, 5 сентября 2026 года, город Свободный"
+          src="{{ url_for('static', filename='miniapp/images/kv-2.jpg') }}"
+          alt="ГАЗ!ФЕСТ — городской фестиваль в Свободном"
         >
         <div class="hero-shade"></div>
         <div class="platform-pill">
@@ -438,6 +438,6 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script src="{{ url_for('static', filename='miniapp/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='miniapp/app.js') }}?v=2"></script>
   </body>
 </html>
