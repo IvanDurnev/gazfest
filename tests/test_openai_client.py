@@ -13,7 +13,7 @@ def test_knowledge_contains_festival_facts():
     assert "DJ Groove" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "DJ Smash" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "Газпром переработка Благовещенск" in FESTIVAL_ASSISTANT_INSTRUCTIONS
-    assert "Ярче звезд" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "Свободный микрофон" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "Ты — Геля" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "в женском роде" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     expected_program = {
