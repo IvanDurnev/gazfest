@@ -16,6 +16,9 @@ def test_knowledge_contains_festival_facts():
     assert "Свободный микрофон" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "Ты — Геля" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "в женском роде" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "блокировки интернета на объектах АГПЗ" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "другом Метаней" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "в городе — там всё работает хорошо" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     expected_program = {
         "14:00": "открытие фестиваля и старт работы всех зон",
         "15:00": "экологические заезды «На старт, внимание, газ!»",
