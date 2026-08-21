@@ -143,7 +143,7 @@ function renderApplications() {
     title.textContent =
       application.activity === "ride"
         ? "Участие в заезде"
-        : "Шоу «Свободный микрофон»";
+        : "Шоу «Время звезд»";
     const details = document.createElement("small");
     details.textContent = applicationDetails(application);
     copy.append(title, details);

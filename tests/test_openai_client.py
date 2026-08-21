@@ -13,7 +13,8 @@ def test_knowledge_contains_festival_facts():
     assert "DJ Groove" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "DJ Smash" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "Газпром переработка Благовещенск" in FESTIVAL_ASSISTANT_INSTRUCTIONS
-    assert "Свободный микрофон" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "Время звезд" in FESTIVAL_ASSISTANT_INSTRUCTIONS
+    assert "Свободный микрофон" not in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "Ты — Геля" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "в женском роде" in FESTIVAL_ASSISTANT_INSTRUCTIONS
     assert "блокировки интернета на объектах АГПЗ" in FESTIVAL_ASSISTANT_INSTRUCTIONS
@@ -22,7 +23,7 @@ def test_knowledge_contains_festival_facts():
     expected_program = {
         "14:00": "открытие фестиваля и старт работы всех зон",
         "15:00": "экологические заезды «На старт, внимание, газ!»",
-        "17:30": "«Свободный микрофон»",
+        "17:30": "«Время звезд»",
         "18:20": "официальное открытие",
         "18:30": "приветствия руководителей и администрации города",
         "18:45": "награждение работников предприятия",
