@@ -42,6 +42,7 @@ def test_miniapp_page(client):
     assert "Геля на связи" in response.text
     assert "miniapp/images/kv-final.jpg" in response.text
     assert "miniapp/images/gelya.png" in response.text
+    assert "Всё о фестивале — в MAX" not in response.text
     expected_program = {
         "14:00": "Открытие с участием байкеров",
         "15:00": "На старт! Внимание! Газ!",

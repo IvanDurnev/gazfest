@@ -91,37 +91,6 @@ button:focus-visible {
     radial-gradient(circle at center, transparent 35%, rgba(0, 16, 65, 0.2) 100%);
 }
 
-.platform-pill {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 8px 14px 8px 8px;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(111, 216, 255, 0.72);
-  border-radius: 16px;
-  background: rgba(0, 24, 89, 0.78);
-  box-shadow: 0 0 24px rgba(31, 181, 255, 0.28);
-  backdrop-filter: blur(12px);
-  color: white;
-  font-size: 13px;
-  font-weight: 650;
-}
-
-.max-mark {
-  display: grid;
-  width: 32px;
-  height: 32px;
-  place-items: center;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #35c9ff, #1169f4 70%);
-  color: white;
-  font-size: 15px;
-  font-weight: 900;
-}
-
 .content {
   position: relative;
   z-index: 2;
@@ -1401,24 +1370,6 @@ body {
   background:
     linear-gradient(180deg, rgba(0, 83, 143, 0.01) 52%, rgba(0, 87, 145, 0.5) 100%),
     radial-gradient(ellipse at 50% 72%, transparent 42%, rgba(0, 72, 120, 0.08) 100%);
-}
-
-.platform-pill {
-  min-height: 43px;
-  padding: 6px 15px 6px 7px;
-  border-color: rgba(190, 239, 255, 0.72);
-  border-radius: 14px;
-  background: rgba(0, 92, 153, 0.72);
-  box-shadow:
-    0 8px 26px rgba(0, 58, 99, 0.27),
-    inset 0 0 18px rgba(125, 230, 255, 0.16);
-  backdrop-filter: blur(14px) saturate(1.25);
-  letter-spacing: 0.01em;
-}
-
-.max-mark {
-  background: linear-gradient(145deg, #7ceaff, #0087cc 68%);
-  box-shadow: 0 0 16px rgba(80, 222, 255, 0.45);
 }
 
 .content {
