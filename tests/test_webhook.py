@@ -42,6 +42,20 @@ def test_miniapp_page(client):
     assert "Геля на связи" in response.text
     assert "miniapp/images/kv-final.jpg" in response.text
     assert "miniapp/images/gelya.png" in response.text
+    expected_program = {
+        "14:00": "Открытие с участием байкеров",
+        "15:00": "На старт! Внимание! Газ!",
+        "17:00": "Время звезд",
+        "18:00": "Официальное открытие",
+        "18:10": "Приветствия руководителей",
+        "18:20": "Награждение работников предприятия",
+        "19:50": "DJ GROOVE",
+        "21:00": "DJ SMASH",
+        "22:00": "Завершение фестиваля",
+    }
+    for event_time, event_name in expected_program.items():
+        assert event_time in response.text
+        assert event_name in response.text
 
 
 def test_webhook_rejects_wrong_secret(client):
